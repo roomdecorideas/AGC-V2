@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const title = generateSeoTitle(keyword);
             const keywordForUrl = keyword.replace(/\s/g, '-').toLowerCase();
             const articleUrl = `${siteUrl}/detail.html?q=${encodeURIComponent(keywordForUrl)}`;
-            const imageUrl = `https://tse1.mm.bing.net/th?q=${encodeURIComponent(keyword)}`;
+            const imageUrl = `https://tse1.mm.bing.net/th?q=${encodeURIComponent(keyword)}&w=240&h=360&c=7&rs=1&p=0&dpr=1.5&pid=1.7`;
             const capitalizedKeyword = capitalizeEachWord(keyword);
             const hashtag = capitalizedKeyword.replace(/\s/g, '');
             const description = `Craving new ideas for ${capitalizedKeyword}? Discover amazing concepts and stunning visuals. Click to get the full inspiration now! #${hashtag} #HomeDecor #DesignIdeas`;
