@@ -213,3 +213,47 @@ footer { text-align: center; padding: 2rem 0; margin-top: 2rem; background-color
 .tool-button:hover:not(:disabled) { background-color: #218838; transform: scale(1.05); }
 .tool-button:disabled { background-color: #aaa; cursor: not-allowed; }
 .tool-status { margin-top: 2rem; padding: 1rem; background-color: #e9ecef; border-radius: 5px; font-family: monospace; font-size: 1rem; }
+
+/* --- ▼▼▼ STYLE BARU UNTUK SEARCH BAR ▼▼▼ --- */
+.search-bar-container {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.search-bar-form {
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.search-bar-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Sudut kiri bulat */
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar-input:focus {
+    border-color: #118bee;
+}
+
+.search-bar-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    background-color: #118bee;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Sudut kanan bulat */
+    transition: background-color 0.3s ease;
+}
+
+.search-bar-button:hover {
+    background-color: #0b78d1;
+}
