@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const pubDate = postDate.toUTCString();
 
             const title = generateSeoTitle(keyword);
-            const keywordForUrl = keyword.replace(/\s/g, '-').toLowerCase();
+            const keywordForUrl = keyword.trim().replace(/\s/g, '-').toLowerCase();
+            const loc = `${siteUrl}/detail.html?q=${encodeURIComponent(keywordForUrl)}`;
             const articleUrl = `${siteUrl}/detail.html?q=${encodeURIComponent(keywordForUrl)}`;
             const imageUrl = `https://tse1.mm.bing.net/th?q=${encodeURIComponent(keyword)}&w=400&h=600&c=7&rs=1&p=0&dpr=1.5&pid=1.7`;
             const capitalizedKeyword = capitalizeEachWord(keyword);
