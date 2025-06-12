@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
             postDate.setUTCHours(randomHour, randomMinute, randomSecond);
             const lastmod = postDate.toISOString();
 
-            const keywordForUrl = keyword.replace(/\s/g, '-').toLowerCase();
+            const keywordForUrl = keyword.trim().replace(/\s/g, '-').toLowerCase();
+            const loc = `${siteUrl}/detail.html?q=${encodeURIComponent(keywordForUrl)}`;
             const pageUrl = `${siteUrl}/detail.html?q=${encodeURIComponent(keywordForUrl)}`;
 
             // Siapkan data untuk blok gambar
