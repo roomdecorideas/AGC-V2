@@ -14,22 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isLoading) return;
         isLoading = true;
         loader.style.display = 'block';
-
         const batch = allKeywords.slice(currentIndex, currentIndex + batchSize);
         
         setTimeout(() => {
             batch.forEach(keyword => {
-                const keywordForUrl = keyword.replace(/\s/g, '-').toLowerCase();
+                // ▼▼▼ PERBAIKAN BUG: Tambahkan .trim() sebelum .replace() ▼▼▼
+                const keywordForUrl = keyword.trim().replace(/\s/g, '-').toLowerCase();
                 const linkUrl = `detail.html?q=${encodeURIComponent(keywordForUrl)}`; 
 
-                // ▼▼▼ PERUBAHAN UKURAN GAMBAR: Dari 240x360 menjadi 400x600 (Medium) ▼▼▼
                 const imageUrl = `https://tse1.mm.bing.net/th?q=${encodeURIComponent(keyword)}&w=400&h=600&c=7&rs=1&p=0&dpr=1.5&pid=1.7`;
-                
                 const newTitle = generateSeoTitle(keyword);
                 const cardHTML = `<article class="content-card"><a href="${linkUrl}"><img src="${imageUrl}" alt="${newTitle}" loading="lazy"><div class="content-card-body"><h3>${newTitle}</h3></div></a></article>`;
                 contentContainer.innerHTML += cardHTML;
             });
-
             currentIndex += batch.length;
             loader.style.display = 'none';
             isLoading = false;
@@ -43,10 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const today = new Date().toISOString().slice(0, 10);
         const storedDate = localStorage.getItem('shuffleDate');
         const storedKeywords = localStorage.getItem('shuffledKeywords');
-        if (storedDate === today && storedKeywords) {
-            allKeywords = JSON.parse(storedKeywords);
-            startDisplay();
-        } else {
+        if (storedDate === today && storedKeywords) { allKeywords = JSON.parse(storedKeywords); startDisplay(); } 
+        else {
             try {
                 const response = await fetch('keyword.txt');
                 if (!response.ok) throw new Error('keyword.txt file not found.');
@@ -64,8 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
     function startDisplay() { if (allKeywords.length > 0) { loadNextBatch(); window.addEventListener('scroll', handleInfiniteScroll); } else { contentContainer.innerHTML = '<p>No keywords to display.</p>'; loader.style.display = 'none'; } }
-
     initializeDailyShuffle();
 });
